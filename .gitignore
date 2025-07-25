@@ -26,7 +26,6 @@ venv/
 .DS_Store
 
 # DLT pipeline artifacts
-schemas/
 .cache/
 .dlt/
 

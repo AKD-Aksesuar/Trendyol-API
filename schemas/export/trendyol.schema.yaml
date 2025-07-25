@@ -1,0 +1,1631 @@
+version: 20
+version_hash: 9PfzpwB0ogZcT+p6uzjxJm5m1mTYpX1RSMASTJ036jQ=
+engine_version: 11
+name: trendyol
+tables:
+  _dlt_version:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: false
+      schema:
+        data_type: text
+        nullable: false
+    write_disposition: skip
+    resource: _dlt_version
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        data_type: text
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: true
+      status:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_version_hash:
+        data_type: text
+        nullable: true
+    write_disposition: skip
+    resource: _dlt_loads
+    description: Created by DLT. Tracks completed loads
+  products:
+    columns:
+      approved:
+        data_type: bool
+        nullable: true
+      archived:
+        data_type: bool
+        nullable: true
+      barcode:
+        data_type: text
+        nullable: true
+      brand:
+        data_type: text
+        nullable: true
+      brand_id:
+        data_type: text
+        nullable: true
+      category_name:
+        data_type: text
+        nullable: true
+      create_date_time:
+        data_type: bigint
+        nullable: true
+      description:
+        data_type: text
+        nullable: true
+      dimensional_weight:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      gender:
+        data_type: text
+        nullable: true
+      has_active_campaign:
+        data_type: bool
+        nullable: true
+      id:
+        nullable: false
+        primary_key: true
+        data_type: text
+      last_update_date:
+        data_type: bigint
+        nullable: true
+      list_price:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      locked:
+        data_type: bool
+        nullable: true
+      on_sale:
+        data_type: bool
+        nullable: true
+      pim_category_id:
+        data_type: text
+        nullable: true
+      platform_listing_id:
+        data_type: text
+        nullable: true
+      product_code:
+        data_type: text
+        nullable: true
+      product_content_id:
+        data_type: text
+        nullable: true
+      product_main_id:
+        data_type: text
+        nullable: true
+      quantity:
+        data_type: bigint
+        nullable: true
+      sale_price:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      stock_code:
+        data_type: text
+        nullable: true
+      stock_unit_type:
+        data_type: text
+        nullable: true
+      supplier_id:
+        data_type: text
+        nullable: true
+      title:
+        data_type: text
+        nullable: true
+      vat_rate:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      delivery_duration:
+        data_type: bigint
+        nullable: true
+      rejected:
+        data_type: bool
+        nullable: true
+      blacklisted:
+        data_type: bool
+        nullable: true
+      blacklist_reason:
+        data_type: text
+        nullable: true
+      has_html_content:
+        data_type: bool
+        nullable: true
+      product_url:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      lock_reason:
+        data_type: text
+        nullable: true
+    write_disposition: replace
+    resource: products
+    x-normalizer:
+      seen-data: true
+  settlements:
+    columns:
+      id:
+        nullable: false
+        primary_key: true
+        data_type: text
+      transaction_date:
+        data_type: bigint
+        nullable: true
+      barcode:
+        data_type: text
+        nullable: true
+      transaction_type:
+        data_type: text
+        nullable: true
+      receipt_id:
+        data_type: text
+        nullable: true
+      description:
+        data_type: text
+        nullable: true
+      payment_period:
+        data_type: bigint
+        nullable: true
+      commission_invoice_serial_number:
+        data_type: text
+        nullable: true
+      order_number:
+        data_type: text
+        nullable: true
+      order_date:
+        data_type: bigint
+        nullable: true
+      payment_order_id:
+        data_type: text
+        nullable: true
+      payment_date:
+        data_type: bigint
+        nullable: true
+      seller_id:
+        data_type: text
+        nullable: true
+      store_id:
+        data_type: text
+        nullable: true
+      store_name:
+        data_type: text
+        nullable: true
+      store_address:
+        data_type: text
+        nullable: true
+      country:
+        data_type: text
+        nullable: true
+      affiliate:
+        data_type: text
+        nullable: true
+      shipment_package_id:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      debt:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+      credit:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+      commission_rate:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+      commission_amount:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+      seller_revenue:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+    write_disposition: merge
+    resource: settlements
+    x-normalizer:
+      seen-data: true
+  otherfinancials:
+    columns:
+      id:
+        nullable: false
+        primary_key: true
+        data_type: text
+      transaction_date:
+        data_type: bigint
+        nullable: true
+      barcode:
+        data_type: text
+        nullable: true
+      transaction_type:
+        data_type: text
+        nullable: true
+      receipt_id:
+        data_type: text
+        nullable: true
+      description:
+        data_type: text
+        nullable: true
+      payment_period:
+        data_type: bigint
+        nullable: true
+      commission_rate:
+        precision: 15
+        scale: 2
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      commission_amount:
+        precision: 15
+        scale: 2
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      commission_invoice_serial_number:
+        data_type: text
+        nullable: true
+      seller_revenue:
+        precision: 15
+        scale: 2
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      order_number:
+        data_type: text
+        nullable: true
+      order_date:
+        data_type: bigint
+        nullable: true
+      payment_order_id:
+        data_type: text
+        nullable: true
+      payment_date:
+        data_type: bigint
+        nullable: true
+      seller_id:
+        data_type: text
+        nullable: true
+      store_id:
+        data_type: text
+        nullable: true
+      store_name:
+        data_type: text
+        nullable: true
+      store_address:
+        data_type: text
+        nullable: true
+      country:
+        data_type: text
+        nullable: true
+      affiliate:
+        data_type: text
+        nullable: true
+      shipment_package_id:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      debt:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+      credit:
+        precision: 15
+        scale: 2
+        nullable: true
+        data_type: double
+    write_disposition: merge
+    resource: otherfinancials
+    x-normalizer:
+      seen-data: true
+  products__attributes:
+    columns:
+      attribute_id:
+        data_type: text
+        nullable: false
+        primary_key: true
+      attribute_name:
+        data_type: text
+        nullable: true
+      attribute_value:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      attribute_value_id:
+        data_type: text
+        nullable: true
+    parent: products
+    x-normalizer:
+      seen-data: true
+  products__images:
+    columns:
+      url:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: products
+    x-normalizer:
+      seen-data: true
+  packages:
+    columns:
+      shipment_address:
+        data_type: json
+        nullable: true
+      order_number:
+        data_type: text
+        nullable: true
+      gross_amount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      total_discount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      total_ty_discount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      tax_number:
+        data_type: text
+        nullable: true
+      invoice_address:
+        data_type: json
+        nullable: true
+      customer_first_name:
+        data_type: text
+        nullable: true
+      customer_email:
+        data_type: text
+        nullable: true
+      customer_id:
+        data_type: text
+        nullable: true
+      customer_last_name:
+        data_type: text
+        nullable: true
+      id:
+        nullable: false
+        primary_key: true
+        data_type: text
+      cargo_tracking_number:
+        data_type: text
+        nullable: true
+      cargo_tracking_link:
+        data_type: text
+        nullable: true
+      cargo_provider_name:
+        data_type: text
+        nullable: true
+      order_date:
+        data_type: bigint
+        nullable: true
+      identity_number:
+        data_type: text
+        nullable: true
+      currency_code:
+        data_type: text
+        nullable: true
+      shipment_package_status:
+        data_type: text
+        nullable: true
+      status:
+        data_type: text
+        nullable: true
+      delivery_type:
+        data_type: text
+        nullable: true
+      time_slot_id:
+        data_type: text
+        nullable: true
+      estimated_delivery_start_date:
+        data_type: bigint
+        nullable: true
+      estimated_delivery_end_date:
+        data_type: bigint
+        nullable: true
+      total_price:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      delivery_address_type:
+        data_type: text
+        nullable: true
+      agreed_delivery_date:
+        data_type: bigint
+        nullable: true
+      fast_delivery:
+        data_type: bool
+        nullable: true
+      origin_shipment_date:
+        data_type: bigint
+        nullable: true
+      last_modified_date:
+        incremental: true
+        data_type: bigint
+        nullable: true
+      commercial:
+        data_type: bool
+        nullable: true
+      fast_delivery_type:
+        data_type: text
+        nullable: true
+      delivered_by_service:
+        data_type: bool
+        nullable: true
+      agreed_delivery_date_extendible:
+        data_type: bool
+        nullable: true
+      extended_agreed_delivery_date:
+        data_type: bigint
+        nullable: true
+      agreed_delivery_extension_end_date:
+        data_type: bigint
+        nullable: true
+      agreed_delivery_extension_start_date:
+        data_type: bigint
+        nullable: true
+      warehouse_id:
+        data_type: text
+        nullable: true
+      group_deal:
+        data_type: bool
+        nullable: true
+      invoice_link:
+        data_type: text
+        nullable: true
+      micro:
+        data_type: bool
+        nullable: true
+      gift_box_requested:
+        data_type: bool
+        nullable: true
+      _3p_by_trendyol:
+        data_type: bool
+        nullable: true
+      contains_dangerous_product:
+        data_type: bool
+        nullable: true
+      is_cod:
+        data_type: bool
+        nullable: true
+      created_by:
+        data_type: text
+        nullable: true
+      origin_package_ids:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      cargo_sender_number:
+        data_type: text
+        nullable: true
+      invoice_address__latitude:
+        data_type: text
+        nullable: true
+      invoice_address__longitude:
+        data_type: text
+        nullable: true
+      etgb_no:
+        data_type: text
+        nullable: true
+      etgb_date:
+        data_type: bigint
+        nullable: true
+      cargo_deci:
+        data_type: bigint
+        nullable: true
+    write_disposition: merge
+    resource: packages
+    x-normalizer:
+      seen-data: true
+  packages__lines:
+    columns:
+      quantity:
+        data_type: bigint
+        nullable: true
+      sales_campaign_id:
+        data_type: text
+        nullable: true
+      product_size:
+        data_type: text
+        nullable: true
+      merchant_sku:
+        data_type: text
+        nullable: true
+      product_name:
+        data_type: text
+        nullable: true
+      product_code:
+        data_type: text
+        nullable: true
+      product_origin:
+        data_type: text
+        nullable: true
+      merchant_id:
+        data_type: text
+        nullable: true
+      amount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      discount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      ty_discount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      currency_code:
+        data_type: text
+        nullable: true
+      product_color:
+        data_type: text
+        nullable: true
+      id:
+        data_type: text
+        nullable: true
+      sku:
+        data_type: text
+        nullable: true
+      vat_base_amount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      barcode:
+        data_type: text
+        nullable: true
+      order_line_item_status_name:
+        data_type: text
+        nullable: true
+      price:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      product_category_id:
+        data_type: text
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: packages
+    x-normalizer:
+      seen-data: true
+  packages__lines__discount_details:
+    columns:
+      line_item_price:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      line_item_discount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      line_item_ty_discount:
+        data_type: decimal
+        precision: 15
+        scale: 2
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: packages__lines
+    x-normalizer:
+      seen-data: true
+  packages__lines__fast_delivery_options:
+    columns:
+      type:
+        data_type: text
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: packages__lines
+    x-normalizer:
+      seen-data: true
+  packages__package_histories:
+    columns:
+      created_date:
+        data_type: bigint
+        nullable: true
+      status:
+        data_type: text
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: packages
+    x-normalizer:
+      seen-data: true
+  packages__origin_package_ids:
+    columns:
+      value:
+        data_type: bigint
+        nullable: true
+      _dlt_root_id:
+        data_type: text
+        nullable: false
+        root_key: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: packages
+    x-normalizer:
+      seen-data: true
+  _dlt_pipeline_state:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      pipeline_name:
+        data_type: text
+        nullable: false
+      state:
+        data_type: text
+        nullable: false
+      created_at:
+        data_type: timestamp
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    write_disposition: append
+    file_format: preferred
+    resource: _dlt_pipeline_state
+    x-normalizer:
+      seen-data: true
+  _trace:
+    columns:
+      transaction_id:
+        data_type: text
+        nullable: true
+      pipeline_name:
+        data_type: text
+        nullable: true
+      execution_context__ci_run:
+        data_type: bool
+        nullable: true
+      execution_context__python:
+        data_type: text
+        nullable: true
+      execution_context__cpu:
+        data_type: bigint
+        nullable: true
+      execution_context__os__name:
+        data_type: text
+        nullable: true
+      execution_context__os__version:
+        data_type: text
+        nullable: true
+      execution_context__library__name:
+        data_type: text
+        nullable: true
+      execution_context__library__version:
+        data_type: text
+        nullable: true
+      execution_context__run_context:
+        data_type: text
+        nullable: true
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      engine_version:
+        data_type: bigint
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    write_disposition: append
+    resource: _trace
+    x-normalizer:
+      seen-data: true
+  _trace__steps:
+    columns:
+      span_id:
+        data_type: text
+        nullable: true
+      step:
+        data_type: text
+        nullable: true
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      step_exception:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      exception_traces:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      step_info__pipeline__pipeline_name:
+        data_type: text
+        nullable: true
+      step_info__first_run:
+        data_type: bool
+        nullable: true
+      step_info__started_at:
+        data_type: timestamp
+        nullable: true
+      step_info__finished_at:
+        data_type: timestamp
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      load_info__destination_type:
+        data_type: text
+        nullable: true
+      load_info__destination_displayable_credentials:
+        data_type: text
+        nullable: true
+      load_info__destination_name:
+        data_type: text
+        nullable: true
+      load_info__environment:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      load_info__staging_type:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      load_info__staging_name:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      load_info__staging_displayable_credentials:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      load_info__destination_fingerprint:
+        data_type: text
+        nullable: true
+      load_info__dataset_name:
+        data_type: text
+        nullable: true
+    parent: _trace
+    x-normalizer:
+      seen-data: true
+  _trace__steps__extract_info__job_metrics:
+    columns:
+      file_path:
+        data_type: text
+        nullable: true
+      items_count:
+        data_type: bigint
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created:
+        data_type: double
+        nullable: true
+      last_modified:
+        data_type: double
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      job_id:
+        data_type: text
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__extract_info__table_metrics:
+    columns:
+      file_path:
+        data_type: text
+        nullable: true
+      items_count:
+        data_type: bigint
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created:
+        data_type: double
+        nullable: true
+      last_modified:
+        data_type: double
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__extract_info__resource_metrics:
+    columns:
+      file_path:
+        data_type: text
+        nullable: true
+      items_count:
+        data_type: bigint
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created:
+        data_type: double
+        nullable: true
+      last_modified:
+        data_type: double
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      resource_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__extract_info__dag:
+    columns:
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      parent_name:
+        data_type: text
+        nullable: true
+      resource_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__extract_info__hints:
+    columns:
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      resource_name:
+        data_type: text
+        nullable: true
+      write_disposition:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      incremental__cursor_path:
+        data_type: text
+        nullable: true
+      incremental__initial_value:
+        data_type: double
+        nullable: true
+      incremental__end_value:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      incremental__row_order:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      incremental__allow_external_schedulers:
+        data_type: bool
+        nullable: true
+      incremental__on_cursor_value_missing:
+        data_type: text
+        nullable: true
+      incremental__lag:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      incremental__range_start:
+        data_type: text
+        nullable: true
+      incremental__range_end:
+        data_type: text
+        nullable: true
+      columns:
+        data_type: text
+        nullable: true
+      file_format:
+        data_type: text
+        nullable: true
+      original_columns:
+        data_type: text
+        nullable: true
+      primary_key:
+        data_type: text
+        nullable: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__step_info__loads_ids:
+    columns:
+      value:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__step_info__load_packages:
+    columns:
+      load_id:
+        data_type: text
+        nullable: true
+      package_path:
+        data_type: text
+        nullable: true
+      state:
+        data_type: text
+        nullable: true
+      schema_hash:
+        data_type: text
+        nullable: true
+      schema_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      completed_at:
+        nullable: true
+        data_type: timestamp
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__step_info__load_packages__jobs:
+    columns:
+      state:
+        data_type: text
+        nullable: true
+      file_path:
+        data_type: text
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created_at:
+        data_type: timestamp
+        nullable: true
+      elapsed:
+        data_type: double
+        nullable: true
+      failed_message:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      table_name:
+        data_type: text
+        nullable: true
+      file_id:
+        data_type: text
+        nullable: true
+      retry_count:
+        data_type: bigint
+        nullable: true
+      file_format:
+        data_type: text
+        nullable: true
+      job_id:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps__step_info__load_packages
+    x-normalizer:
+      seen-data: true
+  _trace__steps__normalize_info__job_metrics:
+    columns:
+      file_path:
+        data_type: text
+        nullable: true
+      items_count:
+        data_type: bigint
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created:
+        data_type: double
+        nullable: true
+      last_modified:
+        data_type: double
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      job_id:
+        data_type: text
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__normalize_info__table_metrics:
+    columns:
+      file_path:
+        data_type: text
+        nullable: true
+      items_count:
+        data_type: bigint
+        nullable: true
+      file_size:
+        data_type: bigint
+        nullable: true
+      created:
+        data_type: double
+        nullable: true
+      last_modified:
+        data_type: double
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      extract_idx:
+        data_type: bigint
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__load_info__job_metrics:
+    columns:
+      load_id:
+        data_type: text
+        nullable: true
+      job_id:
+        data_type: text
+        nullable: true
+      file_path:
+        data_type: text
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      started_at:
+        data_type: timestamp
+        nullable: true
+      finished_at:
+        data_type: timestamp
+        nullable: true
+      state:
+        data_type: text
+        nullable: true
+      remote_url:
+        nullable: true
+        x-normalizer:
+          seen-null-first: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__steps
+    x-normalizer:
+      seen-data: true
+  _trace__steps__step_info__load_packages__tables:
+    columns:
+      parent:
+        data_type: text
+        nullable: true
+      name:
+        data_type: text
+        nullable: true
+      x_normalizer__seen_data:
+        data_type: bool
+        nullable: true
+      write_disposition:
+        data_type: text
+        nullable: true
+      x_replace_strategy:
+        data_type: text
+        nullable: true
+      schema_name:
+        data_type: text
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      resource:
+        data_type: text
+        nullable: true
+      description:
+        data_type: text
+        nullable: true
+      file_format:
+        data_type: text
+        nullable: true
+    parent: _trace__steps__step_info__load_packages
+    x-normalizer:
+      seen-data: true
+  _trace__steps__step_info__load_packages__tables__columns:
+    columns:
+      data_type:
+        data_type: text
+        nullable: true
+      nullable:
+        data_type: bool
+        nullable: true
+      primary_key:
+        data_type: bool
+        nullable: true
+      name:
+        data_type: text
+        nullable: true
+      table_name:
+        data_type: text
+        nullable: true
+      schema_name:
+        data_type: text
+        nullable: true
+      load_id:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+      parent_key:
+        data_type: bool
+        nullable: true
+      unique:
+        data_type: bool
+        nullable: true
+      row_key:
+        data_type: bool
+        nullable: true
+      precision:
+        data_type: bigint
+        nullable: true
+      scale:
+        data_type: bigint
+        nullable: true
+      root_key:
+        data_type: bool
+        nullable: true
+      incremental:
+        data_type: bool
+        nullable: true
+    parent: _trace__steps__step_info__load_packages__tables
+    x-normalizer:
+      seen-data: true
+  _trace__resolved_config_values:
+    columns:
+      key:
+        data_type: text
+        nullable: true
+      is_secret_hint:
+        data_type: bool
+        nullable: true
+      provider_name:
+        data_type: text
+        nullable: true
+      config_type_name:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace
+    x-normalizer:
+      seen-data: true
+  _trace__resolved_config_values__sections:
+    columns:
+      value:
+        data_type: text
+        nullable: true
+      _dlt_parent_id:
+        data_type: text
+        nullable: false
+        parent_key: true
+      _dlt_list_idx:
+        data_type: bigint
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+        row_key: true
+    parent: _trace__resolved_config_values
+    x-normalizer:
+      seen-data: true
+settings:
+  detections:
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    parent_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+    row_key:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+    config:
+      propagation:
+        tables:
+          settlements:
+            _dlt_id: _dlt_root_id
+          otherfinancials:
+            _dlt_id: _dlt_root_id
+          packages:
+            _dlt_id: _dlt_root_id
+previous_hashes:
+- QJF12r66in8uoEwWRdjHOAGkCwcamUTj158yLM+K+TM=
+- dgp5tOJrGEdQLwO9AdEpO/LFS2JDSZZ5SGI4WTqVV8w=
+- WHFgmf8Zze/LDHlgI1+1V840rYB6yx9fiOT3Ey0H93A=
+- sm1Thee0vvVOpjmKoaQ+6lVgFjgOmAsZtc/0QgxNa8Q=
+- sPZY7EXOfrirrws/bGwLHHDSkEBXepIZ94oaKIbgAbQ=
+- urFIIVUDY6f+G5wfB7iPGF8U52y1cU4Xp7aD+TwgKzg=
+- zFRj6VNc9Ip2PdSK8mhOht8A4GI89MVXG2kCT58gPZ8=
+- HRwKFV6uuuFcFScDmt8l5/jqv+wa0yWXFoQziwv5CNE=
+- jWdqiQuavhd54zcK/vqHF4saETrpheyxT1J5CHsSj/k=
+- /myqJbtRPXFG6XtVopCaLxpOP9FBlhOMXj3jvRBRnAI=
