@@ -81,7 +81,7 @@ def trendyol(token=dlt.secrets.value, seller_id=dlt.secrets.value):
             "SellerRevenueNegativeCancel", "CommissionPositiveCancel", "CommissionNegativeCancel"
         ]
         end_date = pendulum.now("UTC")
-        start_date = end_date.subtract(days=400)
+        start_date = end_date.subtract(days=14)
 
         date_ranges = []
         current = start_date
@@ -113,7 +113,7 @@ def trendyol(token=dlt.secrets.value, seller_id=dlt.secrets.value):
             "DeductionInvoices", "FinancialItem"
         ]
         end_date = pendulum.now("UTC")
-        start_date = end_date.subtract(days=400)
+        start_date = end_date.subtract(days=14)
 
         date_ranges = []
         current = start_date
